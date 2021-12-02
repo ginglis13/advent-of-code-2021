@@ -5,11 +5,10 @@ package main
 
 import (
 	"bufio"
-	"os"
 	"fmt"
+	"os"
 	"strconv"
 )
-
 
 func collectReadings() []int {
 	file, err := os.Open("input")
@@ -35,7 +34,6 @@ func collectReadings() []int {
 	return readings
 }
 
-
 func sum(a []int) int {
 	res := 0
 	for _, val := range a {
@@ -45,13 +43,12 @@ func sum(a []int) int {
 	return res
 }
 
-
-func part1(){
+func part1() {
 	readings := collectReadings()
 
 	count := 0
 	for i, ln := range readings {
-		if i + 1 >= len(readings) {
+		if i+1 >= len(readings) {
 			break
 		}
 		if ln < readings[i+1] {
@@ -62,14 +59,13 @@ func part1(){
 	fmt.Println(count)
 }
 
-
 func part2() {
 	readings := collectReadings()
 	count := 0
 
 	// Compare slices of 3
 	for i, _ := range readings {
-		if i + 3 >= len(readings) {
+		if i+3 >= len(readings) {
 			break
 		}
 		if sum(readings[i:(i+3)]) < sum(readings[(i+1):(i+4)]) {
